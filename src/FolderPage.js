@@ -44,11 +44,11 @@ const FolderPage = () => {
   return (
     <>
       <Breadcrumb>
-        <Breadcrumb.Item>
+        <Breadcrumb.Item key="home">
           <Link to="/">Home</Link>
         </Breadcrumb.Item>
-        {path.map((item) => (
-          <Breadcrumb.Item key={item.id}>
+        {path?.map((item, index) => (
+          <Breadcrumb.Item key={item.id || index}>
             <Link to={`/folder/${item.id}`}>{item.name}</Link>
           </Breadcrumb.Item>
         ))}

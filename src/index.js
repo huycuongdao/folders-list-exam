@@ -24,7 +24,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import FolderPage from "./FolderPage";
 import "antd/dist/antd.css";
-import { Layout, PageHeader, Typography } from "antd";
+import { Card, Layout, PageHeader, Typography } from "antd";
 
 const App = () => (
   <Router>
@@ -34,7 +34,15 @@ const App = () => (
       </PageHeader>
       <Layout.Content style={{ padding: 24 }}>
         <Switch>
-          <Route exact path="/" render={() => <Link to="/folder/0">Folders Page</Link>} />
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Link to="/folder/0">
+                <Card>Root folder</Card>
+              </Link>
+            )}
+          />
           <Route path="/folder/:id" component={FolderPage} />
         </Switch>
       </Layout.Content>
