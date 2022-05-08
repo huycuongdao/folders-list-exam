@@ -32,11 +32,13 @@ const FolderPage = () => {
   const [rootFolder, setFolders] = useState({});
   const [isLoading, setLoading] = useState(false);
 
-  useEffect(async () => {
-    setLoading(true);
-    const data = await getFolders();
-    setLoading(false);
-    setFolders(data);
+  useEffect(() => {
+    (async () => {
+      setLoading(true);
+      const data = await getFolders();
+      setLoading(false);
+      setFolders(data);
+    })()
   }, []);
 
   const [matched, path] = getFolderData(rootFolder, +id, [
