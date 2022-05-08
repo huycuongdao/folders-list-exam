@@ -30,9 +30,13 @@ const FolderPage = () => {
   const { id } = useParams();
 
   const [rootFolder, setFolders] = useState({});
+  const [isLoading, setLoading] = useState(false);
 
-  useEffect(() => {
-    getFolders().then(setFolders);
+  useEffect(async () => {
+    setLoading(true);
+    const data = await getFolders();
+    setLoading(false);
+    setFolders(data);
   }, []);
 
   const [matched, path] = getFolderData(rootFolder, +id, [
@@ -57,6 +61,7 @@ const FolderPage = () => {
         <List
           grid={{ gutter: 16, column: 4 }}
           dataSource={data}
+          loading={isLoading}
           renderItem={(item) => (
             <List.Item>
               <Link to={`/folder/${item.id}`}>

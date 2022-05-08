@@ -72,7 +72,7 @@ function getFolders() {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(data);
-    }, 0);
+    }, 1500);
   });
 }
 
