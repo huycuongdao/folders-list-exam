@@ -24,20 +24,21 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import FolderPage from "./FolderPage";
 import "antd/dist/antd.css";
+import { Layout, PageHeader, Typography } from "antd";
 
 const App = () => (
   <Router>
-    <div>
-      <h1>Hello</h1>
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={() => <Link to="/folder/0">folder</Link>}
-        />
-        <Route path="/folder/:id" component={FolderPage} />
-      </Switch>
-    </div>
+    <Layout>
+      <PageHeader>
+        <Typography.Title>Hello</Typography.Title>
+      </PageHeader>
+      <Layout.Content style={{ padding: 24 }}>
+        <Switch>
+          <Route exact path="/" render={() => <Link to="/folder/0">Folders Page</Link>} />
+          <Route path="/folder/:id" component={FolderPage} />
+        </Switch>
+      </Layout.Content>
+    </Layout>
   </Router>
 );
 const rootElement = document.getElementById("root");
