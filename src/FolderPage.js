@@ -11,19 +11,19 @@ const getFolderData = (folders = {}, id, path) => {
   if (!Array.isArray(children)) return [null, path];
 
   let result;
-  let depthResult;
+  let pathResult;
 
   for (let i = 0; i < children.length; i++) {
     const child = children[i];
-    const [matched, matchedDepth] = getFolderData(child, id, [...path, { id: child.id, name: child.name }]);
+    const [matched, matchedPath] = getFolderData(child, id, [...path, { id: child.id, name: child.name }]);
     if (matched) {
       result = matched;
-      depthResult = matchedDepth;
+      pathResult = matchedPath;
       break;
     }
   }
 
-  return [result, depthResult];
+  return [result, pathResult];
 };
 
 const FolderPage = () => {
